@@ -1,4 +1,3 @@
-
 package com.echotech.solardrop;
 
 import gnu.io.SerialPort;
@@ -7,34 +6,39 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 public class LeitorWokwi {
-    public static void main(String[] args) {
-        TelnetSerialPort porta = new TelnetSerialPort();
+    private TelnetSerialPort porta;
+    private BufferedReader leitor;
 
+    public void conectar() throws Exception {
+        porta = new TelnetSerialPort();
+        porta.getTelnetClient().connect("localhost", 4000);
+
+        porta.setSerialPortParams(
+            9600,
+            SerialPort.DATABITS_8,
+            SerialPort.STOPBITS_1,
+            SerialPort.PARITY_NONE
+        );
+
+        leitor = new BufferedReader(
+            new InputStreamReader(porta.getInputStream())
+        );
+
+        System.out.println("Conectado ao Wokwi!");
+    }
+
+    public double lerUmidade() throws Exception {
+        String valor = leitor.readLine();
+        return Double.parseDouble(valor);
+    }
+
+    public void desconectar() {
         try {
-            porta.getTelnetClient().connect("localhost", 4000);
-
-            porta.setSerialPortParams(
-                9600,
-                SerialPort.DATABITS_8,
-                SerialPort.STOPBITS_1,
-                SerialPort.PARITY_NONE
-            );
-
-            System.out.println("Conectado ao Wokwi!");
-
-            BufferedReader leitor = new BufferedReader(
-                new InputStreamReader(porta.getInputStream())
-            );
-
-            String valor;
-
-            while ((valor = leitor.readLine()) != null) {
-                System.out.println("Umidade recebida: " + valor);
+            if (porta != null) {
+                porta.getTelnetClient().disconnect();
             }
-
         } catch (Exception e) {
-            System.out.println("Erro na conexao com o Wokwi:");
-            e.printStackTrace();
+            System.out.println("Erro ao desconectar do Wokwi.");
         }
     }
 }
