@@ -1,0 +1,4 @@
+target/
+solardrop.db
+solardrop.sqbpro
+*.db-journal
