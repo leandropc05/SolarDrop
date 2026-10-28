@@ -1,4 +1,4 @@
-package com.echotech.solardrop;
+package com.echotech.solardrop.hardware;
 
 import gnu.io.SerialPort;
 import gnu.io.rfc2217.TelnetSerialPort;

@@ -1,5 +1,8 @@
-
 package com.echotech.solardrop;
+
+import com.echotech.solardrop.hardware.LeitorWokwi;
+import com.echotech.solardrop.model.Planta;
+import com.echotech.solardrop.repository.PlantaDAO;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -30,9 +33,9 @@ public class Main {
                             + planta.getUmidadeMinima() + "%");
 
                     if (planta.precisaIrrigar()) {
-                        System.out.println("Recomendacao: irrigar.");
+                        System.out.println("Recomendação: irrigar.");
                     } else {
-                        System.out.println("Recomendacao: nao irrigar.");
+                        System.out.println("Recomendação: não irrigar.");
                     }
 
                     System.out.println("--------------------");

@@ -1,4 +1,4 @@
-package com.echotech.solardrop;
+package com.echotech.solardrop.model;
 
 public class Planta {
 

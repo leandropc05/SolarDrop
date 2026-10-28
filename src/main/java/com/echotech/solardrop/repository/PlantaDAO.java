@@ -1,5 +1,7 @@
+package com.echotech.solardrop.repository;
 
-package com.echotech.solardrop;
+import com.echotech.solardrop.config.ConexaoBanco;
+import com.echotech.solardrop.model.Planta;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
