@@ -3,6 +3,7 @@ package com.echotech.solardrop;
 import com.echotech.solardrop.hardware.LeitorWokwi;
 import com.echotech.solardrop.model.Planta;
 import com.echotech.solardrop.repository.PlantaDAO;
+import com.echotech.solardrop.service.IrrigacaoService;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -11,6 +12,7 @@ public class Main {
     public static void main(String[] args) {
         PlantaDAO dao = new PlantaDAO();
         LeitorWokwi leitor = new LeitorWokwi();
+        IrrigacaoService irrigacao = new IrrigacaoService();
 
         try {
             leitor.conectar();
@@ -20,25 +22,11 @@ public class Main {
             while (true) {
                 double umidadeSensor = leitor.lerUmidade();
 
-                System.out.println("Umidade recebida do Wokwi: "
-                        + umidadeSensor + "%");
+                System.out.println("Umidade recebida do Wokwi: " + umidadeSensor + "%");
 
                 for (Planta planta : plantas) {
-                    planta.setUmidadeAtual(umidadeSensor);
+                    irrigacao.verificarIrrigacao(planta, umidadeSensor);
 
-                    System.out.println("Planta: " + planta.getNome());
-                    System.out.println("Umidade atual: "
-                            + planta.getUmidadeAtual() + "%");
-                    System.out.println("Umidade mínima: "
-                            + planta.getUmidadeMinima() + "%");
-
-                    if (planta.precisaIrrigar()) {
-                        System.out.println("Recomendação: irrigar.");
-                    } else {
-                        System.out.println("Recomendação: não irrigar.");
-                    }
-
-                    System.out.println("--------------------");
                 }
             }
 
