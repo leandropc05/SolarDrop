@@ -49,9 +49,9 @@ O projeto integra uma simulação de sensor de arduino pelo Wokwi, uma aplicaç�
 
 ## Integrantes do grupo
 
-Mauro Henrique B. Marques
-Sarah Cardoso
-Leandro Prudente de Carvalho
-Renato de Camargo Guerra
-Gustavo Natan de Oliveira
-Matheus Torres
+- Mauro Henrique B. Marques
+- Sarah Cardoso
+- Leandro Prudente de Carvalho
+- Renato de Camargo Guerra
+- Gustavo Natan de Oliveira
+- Matheus Torres
