@@ -2,3 +2,9 @@ target/
 solardrop.db
 solardrop.sqbpro
 *.db-journal
+
+# PlatformIO
+simulador/.pio/
+
+# VS Code
+simulador/.vscode/
