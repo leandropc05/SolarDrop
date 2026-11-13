@@ -7,6 +7,6 @@ import java.sql.SQLException;
 public class ConexaoBanco {
 
     public static Connection conectar() throws SQLException {
-        return DriverManager.getConnection("jdbc:sqlite:solardrop.db");
+        return DriverManager.getConnection("jdbc:sqlite:C:/Users/leand/OneDrive/Desktop/SolarDropAtual/SolarDropJava/solardrop.db");
     }
 }
